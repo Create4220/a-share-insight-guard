@@ -1,0 +1,164 @@
+@import "tailwindcss";
+
+/*
+ * Morandi Light Theme
+ * ─────────────────────
+ * 莫兰迪色系：低饱和度、柔和、高级灰调
+ * 亮色背景 + 温暖中性色
+ */
+
+@layer base {
+  *, ::before, ::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  :root {
+    /* ── Base surfaces ── */
+    --background: 36 25% 96%;          /* 暖白 */
+    --foreground: 30 8% 18%;           /* 深灰褐 */
+    --card: 36 30% 99%;                /* 卡片白 */
+    --card-foreground: 30 8% 18%;
+    --popover: 36 30% 99%;
+    --popover-foreground: 30 8% 18%;
+
+    /* ── Primary: 莫兰迪蓝 ── */
+    --primary: 210 25% 55%;            /* 灰蓝 */
+    --primary-foreground: 0 0% 100%;
+
+    /* ── Secondary / Muted ── */
+    --secondary: 35 15% 90%;           /* 暖灰 */
+    --secondary-foreground: 30 8% 25%;
+    --muted: 35 15% 94%;
+    --muted-foreground: 30 5% 48%;
+    --accent: 35 18% 89%;
+    --accent-foreground: 30 8% 22%;
+
+    /* ── Borders & Inputs ── */
+    --border: 35 12% 84%;
+    --input: 35 12% 88%;
+    --ring: 210 25% 55%;
+
+    /* ── Radius ── */
+    --radius: 0.625rem;
+
+    /* ── Semantic: 莫兰迪绿（通过/安全） ── */
+    --success: 110 12% 52%;
+    --success-foreground: 0 0% 100%;
+
+    /* ── Semantic: 莫兰迪琥珀（注意/待处理） ── */
+    --warning: 38 35% 58%;
+    --warning-foreground: 0 0% 100%;
+
+    /* ── Semantic: 深黄（高风险） ── */
+    --danger: 45 90% 40%;
+    --danger-foreground: 0 0% 100%;
+
+    /* ── Semantic: 鲜红（严重/拦截） ── */
+    --critical: 0 85% 45%;
+    --critical-foreground: 0 0% 100%;
+
+    /* ── Semantic: 莫兰迪紫（证据/信息） ── */
+    --evidence: 260 12% 55%;
+    --evidence-foreground: 0 0% 100%;
+
+    /* ── Destructive ── */
+    --destructive: 0 50% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* ── Legacy aliases for shared components ── */
+    --color-canvas: hsl(36 25% 96%);
+    --color-surface: hsl(36 30% 99%);
+    --color-surface-raised: hsl(35 18% 92%);
+    --color-border: hsl(35 12% 84%);
+    --color-text-primary: hsl(30 8% 18%);
+    --color-text-secondary: hsl(30 5% 40%);
+    --color-text-muted: hsl(30 5% 55%);
+    --color-primary: hsl(210 25% 55%);
+    --color-evidence: hsl(260 12% 55%);
+    --color-success: hsl(110 12% 52%);
+    --color-warning: hsl(38 35% 58%);
+    --color-danger: hsl(45 90% 40%);
+    --color-critical: hsl(0 85% 45%);
+    --color-risk-low: hsl(210 25% 55%);
+    --color-risk-medium: hsl(210 100% 55%);
+    --color-risk-high: hsl(45 90% 40%);
+    --color-risk-critical: hsl(0 85% 45%);
+    --color-score-green: hsl(110 12% 52%);
+    --color-score-teal: hsl(170 15% 50%);
+    --color-score-amber: hsl(38 35% 58%);
+    --color-score-red: hsl(0 85% 45%);
+  }
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+html {
+  color-scheme: light;
+  font-size: 24px;  /* 1.5x base: 16px → 24px, scales all rem-based Tailwind classes */
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC',
+    'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial,
+    sans-serif;
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+}
+
+/* Card & table text breathing room */
+[data-slot="card-content"] {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+td, th {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted-foreground) / 0.2);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground) / 0.35);
+}
